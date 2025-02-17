@@ -68,7 +68,6 @@ class RabbitMQServiceProvider extends ModuleServiceProvider
                            $rabbitmqConfig
                        )
                    ]);
-            dd( config('queue.connections.rabbitmq', []));
         }
     }
 }
