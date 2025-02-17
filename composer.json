@@ -1,0 +1,23 @@
+{
+  "name": "m-tech-stack/rabbit-mq",
+  "description": "This Project Depends On Base and Using RabbitMQ",
+  "type": "library",
+  "license": "MIT",
+  "autoload": {
+    "psr-4": {
+      "RabbitMQ\\": "src/"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "RabbitMQ\\Providers\\RabbitMQServiceProvider"
+      ]
+    }
+  },
+  "require": {
+    "php-amqplib/php-amqplib": "^3.7",
+    "vladimir-yuldashev/laravel-queue-rabbitmq": "*",
+    "m-tech-stack/base-package": "*"
+  }
+}
