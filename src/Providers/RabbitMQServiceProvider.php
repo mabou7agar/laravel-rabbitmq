@@ -24,6 +24,7 @@ class RabbitMQServiceProvider extends ModuleServiceProvider
         $this->registerMigrations();
         $this->handlePublish();
         $this->registerMigrations();
+        $this->mergeRabbitMQConfig();
     }
 
     public function register(): void
@@ -59,14 +60,15 @@ class RabbitMQServiceProvider extends ModuleServiceProvider
     protected function mergeRabbitMQConfig()
     {
         $rabbitmqConfig = config('rabbitmq');
-
         if ($rabbitmqConfig) {
+            unset($rabbitmqConfig['actions']);
             config([
                        'queue.connections.rabbitmq' => array_merge(
                            config('queue.connections.rabbitmq', []),
                            $rabbitmqConfig
                        )
                    ]);
+            dd( config('queue.connections.rabbitmq', []));
         }
     }
 }

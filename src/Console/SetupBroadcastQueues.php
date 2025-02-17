@@ -14,16 +14,16 @@ class SetupBroadcastQueues extends Command
 
     public function handle()
     {
-        $connectionConfig = Config::get('rabbitmq.connection');
-        $exchanges = Config::get('rabbitmq.exchanges');
-        $queues = Config::get('rabbitmq.queues');
+        $connectionConfig = Config::get('rabbitmq.hosts');
+        $exchanges = Config::get('rabbitmq.options.exchanges');
+        $queues = Config::get('rabbitmq.options.queues');
 
         $connection = new AMQPStreamConnection(
-            $connectionConfig['host'],
-            $connectionConfig['port'],
-            $connectionConfig['user'],
-            $connectionConfig['password'],
-            $connectionConfig['vhost']
+            $connectionConfig[0]['host'],
+            $connectionConfig[0]['port'],
+            $connectionConfig[0]['user'],
+            $connectionConfig[0]['password'],
+            $connectionConfig[0]['vhost']
         );
 
         $channel = $connection->channel();
