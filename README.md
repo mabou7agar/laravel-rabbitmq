@@ -13,6 +13,9 @@ php artisan vendor:publish --tag="base-rabbitmq" --force
 
 #### Test Broadcast Message
 ``` bash
+php artisan rabbitmq:setup-broadcast
+```
+``` bash
 php artisan rabbitmq:test-broadcast 
 ```
 ``` bash
